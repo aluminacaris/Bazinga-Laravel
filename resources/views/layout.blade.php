@@ -30,8 +30,8 @@
             <li> <a href="{{route('action.index')}}" class="nav-link text-white"> 
                     Ações
                 </a> </li>
-            <li> <a href="#" class="nav-link text-white"> 
-                    Premios
+            <li> <a href="{{route('useraction.index')}}" class="nav-link text-white"> 
+                    Ações de usuários
                 </a> </li>
         </ul>
     </div>
