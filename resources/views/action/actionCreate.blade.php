@@ -11,7 +11,18 @@
         @endforeach
     </ul>
 </div>
+
 @endif
+<div class="container">
+    <div class="container">
+        <header class="d-flex justify-content-center py-3">
+            <ul class="nav nav-pills">
+   
+                <li class="nav-item"><a href="{{route('action.index')}}" class="nav-link">Ações</a></li>
+                <li class="nav-item"><a href="{{route('action.create')}}"class="nav-link active"class="nav-link">Criar novas ações</a></li>
+                
+        </header>
+    </div>
 <form action="{{route('action.store')}}" method="POST">
 @csrf
     <legend>Adicionar Ação</legend>

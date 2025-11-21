@@ -1,22 +1,39 @@
 @extends('layout')
 @section('content')
 <div class="container">
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-    @foreach($categories as $cat)
-    <div class="col">
-      <div class="card shadow-sm"> <img src= "storage/app/public/image/categories/download.png"></img>
-     <div class="card-body">
-          <p class="card-text">{{$cat->name}}</p>
-          <p class="card-text">{{$cat->descritpion}}</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="btn-group"> <button type="button" class="btn btn-sm btn-outline-secondary">View</button> <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> </div> <small class="text-body-secondary">9 mins</small>
-          </div>
+    <div class="container">
+        <header class="d-flex justify-content-center py-3">
+            <ul class="nav nav-pills">  
+                <li class="nav-item"><a href="{{route('category.index')}}" class="nav-link active" class="nav-link">Categorias</a></li>
+                <li class="nav-item"><a href="{{route('category.create')}}" class="nav-link">Criar categorias</a></li>
+            </ul>
+        </header>
+    </div>
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            @foreach ($categories as $cat)
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="card-img-top" src="{{ asset('storage/' . $cat->image) }}"
+                            alt="Imagem da categoria {{ $cat->name }}" width="150"></img>
+                        <div class="card-body">
+                            <p class="card-text">{{ $cat->name }}</p>
+                            <p class="card-text">{{ $cat->description }}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a href="{{ route('category.show', $cat->id) }}"><button type="button"
+                                            class="btn btn-sm btn-outline-secondary">Mostrar</button></a>
+                                    <a href="{{ route('category.edit', $cat->id) }}"><button type="button"
+                                            class="btn btn-sm btn-outline-secondary">Editar</button></a>
+                                </div>
+                                <small class="text-body-secondary">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
         </div>
-      </div>
     </div>
-      @endforeach
-    </div>
-  </div>
 
 
 
@@ -24,7 +41,7 @@
 
 
 
-<table class="table table-dark table-striped">
+    {{-- <table class="table table-dark table-striped">
   <thead>
     <tr>
       <th scope="col">id</th>
@@ -34,7 +51,7 @@
       <th scope="col">Mostrar</th>
     </tr>
   <tbody>
-    @foreach($categories as $cat)
+    @foreach ($categories as $cat)
     <tr>
       <th scope="row">{{$cat->id}}</th>
       <td>{{$cat->name}}</td>
@@ -45,5 +62,5 @@
     @endforeach
   </tbody>
   </thead>
-</table>
+</table> --}}
 @endsection

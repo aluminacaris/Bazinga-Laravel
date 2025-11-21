@@ -10,7 +10,8 @@ class Categories extends Model
   use HasFactory;
   protected $fillable=[
     'name',
-    'description'
+    'description',
+    'image'
    ];
    public function actions(){
      return $this->hasTo(Actions::class);

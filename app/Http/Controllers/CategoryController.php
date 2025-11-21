@@ -17,7 +17,7 @@ class CategoryController extends Controller
         //$category = new Categories;
         //$category->all();
         $categories = Categories::all();
-
+        //dd($categories);
         return view('category/categoryIndex', compact('categories'));
     }
 
@@ -38,7 +38,8 @@ class CategoryController extends Controller
             $request->all(),
             [
                 'name' => 'required|max:30|min:3',
-                'description' => 'required|min:7'
+                'description' => 'required|min:7',
+                'image' => 'nullable|image|mimes:png,jpg,jpeg,webp|max:2048'
             ],
             [
                 'name.required' => 'O nome deve ser preenchido',
@@ -53,10 +54,13 @@ class CategoryController extends Controller
                 ->withErrors($validate)
                 ->withInput();
         } else {
-            //dd($request);
+            if ($request->hasFile('image')) {
+               $path = $request->file('image')->store('categories', 'public');  
+            }
             $create = Categories::create([
                 'name' => $request->input('name'),
-                'description' => $request->input('description')
+                'description' => $request->input('description'),
+                'image'=>$path
             ]);
             if ($create) {
                 return redirect()->route('category.index');
@@ -93,9 +97,20 @@ class CategoryController extends Controller
     {
         //dd($request);
         //outra maneira de quebrar o request para salvar
+      
+        $path=null;
+        if ($request->hasFile('image')) {
+               $path = $request->file('image')->store('categories', 'public');  
+        }
         $category = Categories::findOrFail($id);
-        $update = $category->update($request->except(['_token', '_method']));
-        if ($update) {
+        $category->name = $request->input('name');
+        $category->description = $request->input('description');
+        if(isset($path)){
+            $category->image=$path;
+        }
+        $category->save();
+       
+        if ($category->wasChanged()) {
             return redirect()->route('category.index');
         } else {
             return redirect()->back()->with('message', 'Erro na atualizacao');

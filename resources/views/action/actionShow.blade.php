@@ -13,6 +13,16 @@
     </ul>
 </div>
 @endif
+<div class="container">
+    <div class="container">
+        <header class="d-flex justify-content-center py-3">
+            <ul class="nav nav-pills">
+                
+                <li class="nav-item"><a href="{{route('action.index')}}" class="nav-link">Ações</a></li>
+                <li class="nav-item"><a href="{{route('action.create')}}" class="nav-link">Criar novas ações</a></li>
+                
+        </header>
+    </div>
 <form action="{{route('action.destroy',$action->id)}}" method="POST">
 @csrf
 @method('DELETE')
@@ -33,10 +43,7 @@
      <div class="mb-3">
         <label for="disableTextInput" class="form-label">Pontos</label>
         <input type="text" id="disableTextInput" name="points" class="form-control" placeholder="{{$action->points}}">
-    </div>
-   
-        
-    
+    </div>  
     <button type="submit" class="btn btn-danger">Deletar</button>
    
     </form>

@@ -3,6 +3,17 @@
 @if(session()->has('message'))
     {{session()->get('message')}}
 @endif
+<div class="container">
+    <div class="container">
+        <header class="d-flex justify-content-center py-3">
+            <ul class="nav nav-pills">
+
+                <li class="nav-item"><a href="{{route('category.index')}}" class="nav-link">Categorias</a></li>
+                <li class="nav-item"><a href="{{route('category.create')}}" class="nav-link">Criar categorias</a></li>
+                
+            </ul>
+        </header>
+    </div>
 <form action="{{route('category.destroy', $category->id)}}" method="POST">
 @csrf
 @method('DELETE')
