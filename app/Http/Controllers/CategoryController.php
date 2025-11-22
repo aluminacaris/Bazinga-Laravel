@@ -56,7 +56,10 @@ class CategoryController extends Controller
         } else {
             if ($request->hasFile('image')) {
                $path = $request->file('image')->store('categories', 'public');  
+            }else{
+                $path='NA';
             }
+
             $create = Categories::create([
                 'name' => $request->input('name'),
                 'description' => $request->input('description'),
