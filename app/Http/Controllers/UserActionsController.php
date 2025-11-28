@@ -55,9 +55,11 @@ class UserActionsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(UserActions $userActions)
+    public function show($id)
     {
-        //
+        $userAction = UserActions::with(['user', 'action.categories'])->findOrFail($id);
+
+        return view('userAction/userActionShow', compact('userAction'));
     }
 
     /**
@@ -97,8 +99,14 @@ class UserActionsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(UserActions $userActions)
+    public function destroy($id)
     {
-        //
+        $userAction = UserActions::findOrFail($id);
+
+        $userAction->delete();
+
+        return redirect()
+            ->route('useraction.index')
+            ->with('success', 'Registro de ação do usuário excluído com sucesso!');
     }
 }

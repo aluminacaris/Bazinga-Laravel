@@ -34,8 +34,16 @@
       <td>{{$ua->quantity}}</td>
       <td>{{$ua->quantity*$ua->action->points}}</td>
       <td>{{Carbon\Carbon::parse($ua->date)->format('d/m/Y') }}</td>
-      <td><a href="{{--route('action.edit', $at->id)--}}"><button type="button" class="btn btn-success" hres>Editar</button></td>
-      <td><a href="{{--route('action.show', $at->id)--}}"><button type="button" class="btn btn-success" hres>Mostrar</button></td>
+      <td>
+        <a href="{{ route('useraction.edit', $ua->id) }}">
+          <button type="button" class="btn btn-success">Editar</button>
+        </a>
+      </td>
+      <td>
+        <a href="{{ route('useraction.show', $ua->id) }}">
+          <button type="button" class="btn btn-success">Mostrar</button>
+        </a>
+      </td>
     </tr>
     @endforeach
     </tbody>

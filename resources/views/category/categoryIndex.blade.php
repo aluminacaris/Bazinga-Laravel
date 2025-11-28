@@ -12,10 +12,16 @@
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             @foreach ($categories as $cat)
+                @php
+                    $hasImage = !empty($cat->image) && $cat->image !== 'NA';
+                    $imagePath = $hasImage
+                        ? asset('storage/' . $cat->image)
+                        : asset('images/category-placeholder.svg');
+                @endphp
                 <div class="col">
                     <div class="card shadow-sm">
-                        <img class="card-img-top" src="{{ asset('storage/' . $cat->image) }}"
-                            alt="Imagem da categoria {{ $cat->name }}" width="150"></img>
+                        <img class="card-img-top" src="{{ $imagePath }}"
+                            alt="Imagem da categoria {{ $cat->name }}" width="150">
                         <div class="card-body">
                             <p class="card-text">{{ $cat->name }}</p>
                             <p class="card-text">{{ $cat->description }}</p>

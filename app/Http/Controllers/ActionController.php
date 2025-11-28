@@ -115,6 +115,12 @@ class ActionController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $action = Actions::findOrFail($id);
+
+        $action->delete();
+
+        return redirect()
+            ->route('action.index')
+            ->with('success', 'Ação excluída com sucesso!');
     }
 }

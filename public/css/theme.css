@@ -1,0 +1,212 @@
+:root {
+    --lilas-principal: #9370db;
+    --lilas-escuro: #7b68ee;
+    --lilas-claro: #d8bfd8;
+    --lilas-suave: #f4edff;
+    --lilas-texto: #40235f;
+    --cinza-claro: #f7f7fb;
+    --branco: #ffffff;
+    --sombra-suave: 0 10px 30px rgba(147, 112, 219, 0.15);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, var(--lilas-suave), var(--cinza-claro));
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--lilas-texto);
+}
+
+.app-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-navbar {
+    background: linear-gradient(120deg, var(--lilas-principal), var(--lilas-escuro));
+    color: var(--branco);
+    padding: 18px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--sombra-suave);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.top-navbar .brand {
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.navbar-links {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.navbar-links .nav-link {
+    color: var(--branco);
+    border-radius: 999px;
+    padding: 8px 18px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.navbar-links .nav-link:hover,
+.navbar-links .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.content-wrapper {
+    flex: 1;
+    padding: 32px;
+}
+
+.content-card {
+    background: var(--branco);
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: var(--sombra-suave);
+}
+
+.btn-primary,
+.btn-success,
+.btn-outline-secondary,
+.btn-secondary {
+    border-radius: 999px;
+    padding: 8px 20px;
+    font-weight: 600;
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(147, 112, 219, 0.25);
+}
+
+.btn-primary,
+.btn-success {
+    background: linear-gradient(135deg, var(--lilas-principal), var(--lilas-escuro));
+    color: var(--branco);
+}
+
+.btn-outline-secondary,
+.btn-secondary {
+    background: var(--branco);
+    border: 2px solid var(--lilas-principal);
+    color: var(--lilas-principal);
+    box-shadow: none;
+}
+
+.btn-outline-secondary:hover,
+.btn-secondary:hover {
+    background: var(--lilas-principal);
+    color: var(--branco);
+}
+
+.table {
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--branco);
+    box-shadow: var(--sombra-suave);
+}
+
+.table thead {
+    background: linear-gradient(135deg, var(--lilas-principal), var(--lilas-escuro));
+    color: var(--branco);
+}
+
+.table tr:nth-child(even) {
+    background: var(--lilas-suave);
+}
+
+.card {
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--sombra-suave);
+}
+
+.card-img-top {
+    height: 180px;
+    object-fit: cover;
+}
+
+.footer {
+    background: linear-gradient(135deg, var(--lilas-principal), var(--lilas-escuro));
+    color: var(--branco);
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: var(--sombra-suave);
+}
+
+.footer .text-body-secondary,
+.footer a {
+    color: var(--lilas-claro) !important;
+}
+
+.alert,
+.sucesso,
+.erro {
+    border-radius: 14px;
+    border: none;
+    box-shadow: var(--sombra-suave);
+}
+
+.alert-success,
+.sucesso {
+    background: #d4edda;
+    color: #1e5a30;
+}
+
+.alert-danger,
+.erro {
+    background: #f8d7da;
+    color: #a32033;
+}
+
+.form-control,
+.form-select,
+input[type='date'],
+input[type='text'],
+input[type='number'],
+textarea {
+    border-radius: 14px;
+    border: 2px solid var(--lilas-claro);
+    padding: 12px;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus,
+.form-select:focus,
+input:focus,
+textarea:focus {
+    border-color: var(--lilas-principal);
+    box-shadow: 0 0 0 3px rgba(147, 112, 219, 0.2);
+}
+
+@media (max-width: 992px) {
+    .top-navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .navbar-links {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .content-wrapper {
+        padding: 20px;
+    }
+}
+
