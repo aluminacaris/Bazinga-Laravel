@@ -10,7 +10,7 @@
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
     </script>
     <link rel="stylesheet" href="{{ asset('css/theme.css') }}">
-    <title>Document</title>
+    <title>bisnaga</title>
 </head>
 
 <body>
